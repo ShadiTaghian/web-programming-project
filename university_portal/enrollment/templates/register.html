@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        :root {
+            --grey-50: #f4f6f5;
+            --grey-100: #e8ecea;
+            --grey-300: #c5cdc8;
+            --grey-600: #5c6661;
+            --grey-800: #2f3633;
+            --green-500: #4a7c59;
+            --green-600: #3d684a;
+            --green-100: #e4efe7;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px 16px;
+            font-family: Georgia, "Times New Roman", serif;
+            background: linear-gradient(180deg, var(--grey-50) 0%, var(--grey-100) 100%);
+            color: var(--grey-800);
+        }
+
+        .card {
+            width: 100%;
+            max-width: 520px;
+            background: #fbfcfb;
+            border: 1px solid var(--grey-300);
+            border-radius: 20px;
+            padding: 36px 40px;
+            box-shadow: 0 12px 32px rgba(47, 54, 51, 0.08);
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 1.75rem;
+            font-weight: 600;
+            text-align: center;
+            color: var(--green-600);
+        }
+
+        .subtitle {
+            margin: 0 0 28px;
+            text-align: center;
+            color: var(--grey-600);
+            font-size: 0.95rem;
+        }
+
+        .success {
+            margin: 0 0 20px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: var(--green-100);
+            color: var(--green-600);
+            text-align: center;
+        }
+
+        .field {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+            color: var(--grey-600);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--grey-300);
+            border-radius: 14px;
+            background: var(--grey-50);
+            color: var(--grey-800);
+            font: inherit;
+            font-size: 1rem;
+        }
+
+        textarea {
+            min-height: 88px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--green-500);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.18);
+        }
+
+        button {
+            width: 100%;
+            margin-top: 8px;
+            padding: 13px 16px;
+            border: none;
+            border-radius: 14px;
+            background: var(--green-500);
+            color: #f7faf8;
+            font: inherit;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: var(--green-600);
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <h1>Student Registration</h1>
+        <p class="subtitle">Enter your name and personal information</p>
+        {% if success %}
+            <p class="success">Student registered successfully.</p>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="field">
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <div class="field">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" required></textarea>
+            </div>
+            <div class="field">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            <div class="field">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" required>
+            </div>
+            <div class="field">
+                <label for="zip_code">Zip code</label>
+                <input type="text" id="zip_code" name="zip_code" required>
+            </div>
+            <div class="field">
+                <label for="country">Country</label>
+                <input type="text" id="country" name="country" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+</body>
+</html>
